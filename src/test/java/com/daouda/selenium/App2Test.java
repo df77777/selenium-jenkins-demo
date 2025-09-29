@@ -6,7 +6,12 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.time.Instant;
 
 public class App2Test {
 
@@ -22,24 +27,33 @@ public class App2Test {
         options.addArguments("--window-size=1920,1080");
 
         driver = new EdgeDriver(options);
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
     @Test
     public void testFormulaireTechlistic() throws InterruptedException {
+        // Initialisation de WebDriverWait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
-        System.out.println("AppTest1");
+        System.out.println("AppTest2");
 
-        // Cookies
-        Thread.sleep(3000);
-        WebElement cookies = driver.findElement(By.id("ez-accept-all"));
-        cookies.click();
-        Thread.sleep(3000);
+        try {
+            // Cookies
+            Thread.sleep(3000);
+            WebElement cookies = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='ez-accept-all']")));
+            cookies.click();
+            Thread.sleep(3000);
+        }catch (Exception e){
+            System.out.println("No Such Cookies");
+        }
 
+/*
         // Scroll vers le formulaire
         WebElement formulaire = driver.findElement(By.xpath("//span[@style='font-size:large']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", formulaire);
         Thread.sleep(3000);
+
+ */
 
         // Remplissage du formulaire
         driver.findElement(By.cssSelector("input[name='firstname']")).sendKeys("Daouda");
