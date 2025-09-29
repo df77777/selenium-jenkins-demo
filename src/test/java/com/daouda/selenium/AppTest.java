@@ -26,14 +26,18 @@ public class AppTest {
         System.setProperty("webdriver.edge.driver",
                 "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless");       // mode sans UI
-        options.addArguments("--disable-gpu");    // recommandé sur Windows
-        options.addArguments("--window-size=1920,1080"); // taille du viewport
-        WebDriver driver = new EdgeDriver(options);
-        driver.manage().window().maximize();
+        options.addArguments("--headless=new");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new EdgeDriver(options); // ✅ plus de "WebDriver" ici
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         actions = new Actions(driver);
     }
+
 
     @Test
     public void testAllAutomation() throws InterruptedException, IOException {
