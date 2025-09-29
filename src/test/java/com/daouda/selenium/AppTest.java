@@ -22,7 +22,9 @@ public class AppTest {
 
     @Before
     public void setUp() {
-        driver = new EdgeDriver();
+        System.setProperty("webdriver.edge.driver",
+                "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
+        WebDriver driver = new EdgeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         actions = new Actions(driver);
