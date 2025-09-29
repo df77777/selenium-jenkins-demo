@@ -49,7 +49,7 @@ public class AppTest {
     @Test
     public void testAllAutomation() throws InterruptedException, IOException {
         driver.get("https://testautomationpractice.blogspot.com/?utm_source=chatgpt.com");
-        System.out.println("Le but est d'automatiser le maximum d'élément possible sur : " + driver.getTitle());
+        System.out.println("AppTest1");
 
         // Cookie
         wait.until(ExpectedConditions.elementToBeClickable(By.id("cookieChoiceDismiss"))).click();

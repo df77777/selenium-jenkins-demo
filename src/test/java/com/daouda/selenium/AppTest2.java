@@ -28,6 +28,7 @@ public class AppTest2 {
     @Test
     public void testFormulaireTechlistic() throws InterruptedException {
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
+        System.out.println("AppTest1");
 
         // Cookies
         Thread.sleep(3000);
