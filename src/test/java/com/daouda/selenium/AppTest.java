@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -24,6 +25,10 @@ public class AppTest {
     public void setUp() {
         System.setProperty("webdriver.edge.driver",
                 "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless");       // mode sans UI
+        options.addArguments("--disable-gpu");    // recommandé sur Windows
+        options.addArguments("--window-size=1920,1080"); // taille du viewport
         WebDriver driver = new EdgeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
