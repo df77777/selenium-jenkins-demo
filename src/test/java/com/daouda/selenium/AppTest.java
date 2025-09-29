@@ -29,7 +29,7 @@ public class AppTest {
         options.addArguments("--headless");       // mode sans UI
         options.addArguments("--disable-gpu");    // recommandé sur Windows
         options.addArguments("--window-size=1920,1080"); // taille du viewport
-        WebDriver driver = new EdgeDriver();
+        WebDriver driver = new EdgeDriver(options);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         actions = new Actions(driver);
