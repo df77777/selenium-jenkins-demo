@@ -25,18 +25,25 @@ public class AppTest {
     public void setUp() {
         System.setProperty("webdriver.edge.driver",
                 "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--window-size=1920,1080");
 
-        driver = new EdgeDriver(options); // ✅ plus de "WebDriver" ici
+        EdgeOptions options = new EdgeOptions();
+
+        // ✅ Flags spécifiques pour Jenkins / environnements headless
+        options.addArguments("--headless");           // Headless stable
+        options.addArguments("--disable-gpu");            // Evite les crashs GPU
+        options.addArguments("--no-sandbox");             // Important en CI/CD
+        options.addArguments("--disable-dev-shm-usage");  // Evite problème mémoire
+        options.addArguments("--remote-allow-origins=*"); // Permet connexions
+
+
+        // ✅ Certains Jenkins Windows/Linux nécessitent ceci :
+        options.setCapability("ms:edgeOptions", options);
+
+        driver = new EdgeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         actions = new Actions(driver);
     }
+
 
 
     @Test
