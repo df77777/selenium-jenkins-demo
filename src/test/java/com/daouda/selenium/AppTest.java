@@ -7,12 +7,15 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 
 public class AppTest {
@@ -22,24 +25,16 @@ public class AppTest {
     private Actions actions;
 
     @Before
-    public void setUp() {
-        System.setProperty("webdriver.edge.driver",
-                "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
-
+    public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
 
-        // ✅ Flags spécifiques pour Jenkins / environnements headless
-        options.addArguments("--headless");           // Headless stable
-        options.addArguments("--disable-gpu");            // Evite les crashs GPU
-        options.addArguments("--no-sandbox");             // Important en CI/CD
-        options.addArguments("--disable-dev-shm-usage");  // Evite problème mémoire
-        options.addArguments("--remote-allow-origins=*"); // Permet connexions
+        // URL du hub Selenium Grid
+        URL gridUrl = new URL("http://localhost:4444/wd/hub");
 
-
-        // ✅ Certains Jenkins Windows/Linux nécessitent ceci :
-        options.setCapability("ms:edgeOptions", options);
-
-        driver = new EdgeDriver(options);
+        driver = new RemoteWebDriver(gridUrl, options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         actions = new Actions(driver);
     }

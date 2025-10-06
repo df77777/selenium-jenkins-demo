@@ -6,10 +6,13 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -18,16 +21,17 @@ public class App2Test {
     private WebDriver driver;
 
     @Before
-    public void setUp() {
-        System.setProperty("webdriver.edge.driver",
-                "C:\\Users\\I767569\\IdeaProjects\\java_essentials\\Selenium\\msedgedriver.exe");
+    public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new"); // headless pour Jenkins
+        options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
 
-        driver = new EdgeDriver(options);
-        //driver.manage().window().maximize();
+        // URL du hub Selenium Grid
+        URL gridUrl = new URL("http://localhost:4444/wd/hub");
+
+        driver = new RemoteWebDriver(gridUrl, options);
+
     }
 
     @Test
