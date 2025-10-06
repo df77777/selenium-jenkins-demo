@@ -47,7 +47,6 @@ public class App2Test {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
         System.out.println("AppTest2");
-        Thread.sleep(10000);
 
         try {
             // Cookies
@@ -117,6 +116,7 @@ public class App2Test {
 
     @After
     public void tearDown() {
+        System.out.println("Fin du Test 2");
         if (driver != null) driver.quit();
     }
 }

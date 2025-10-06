@@ -52,7 +52,6 @@ public class AppTest {
     public void testAllAutomation() throws InterruptedException, IOException {
         driver.get("https://testautomationpractice.blogspot.com/?utm_source=chatgpt.com");
         System.out.println("AppTest1");
-        Thread.sleep(10000);
 
         // Cookie
         wait.until(ExpectedConditions.elementToBeClickable(By.id("cookieChoiceDismiss"))).click();
@@ -194,8 +193,8 @@ public class AppTest {
 
     @After
     public void tearDown() throws InterruptedException {
+        System.out.println("Fin du Test 1");
         if (driver != null) driver.quit();
 
-        System.out.println("le test a reussi, fermeture du navigateur");
     }
 }
