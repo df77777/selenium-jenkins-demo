@@ -27,9 +27,16 @@ public class AppTest {
     @Before
     public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
+        //options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage"); // très important pour éviter les crashs dans Docker
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-background-networking");
+        options.addArguments("--disable-software-rasterizer");
+
 
         // URL du hub Selenium Grid
         URL gridUrl = new URL("http://localhost:4444/wd/hub");
@@ -45,6 +52,7 @@ public class AppTest {
     public void testAllAutomation() throws InterruptedException, IOException {
         driver.get("https://testautomationpractice.blogspot.com/?utm_source=chatgpt.com");
         System.out.println("AppTest1");
+        Thread.sleep(10000);
 
         // Cookie
         wait.until(ExpectedConditions.elementToBeClickable(By.id("cookieChoiceDismiss"))).click();
@@ -101,7 +109,7 @@ public class AppTest {
         driver.findElement(By.id("Wikipedia1_wikipedia-search-input")).sendKeys("chatgpt");
         driver.findElement(By.xpath("//input[@class='wikipedia-search-button']")).click();
         Thread.sleep(1000);
-        /*
+
 
         // Dynamic button start/stop
         try {
@@ -115,6 +123,7 @@ public class AppTest {
             System.out.println("Start/Stop non présent");
         }
 
+        /*
         Thread.sleep(1000);
         // Alertes
         Alert alert1 = driver.switchTo().alert();
@@ -184,7 +193,9 @@ public class AppTest {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws InterruptedException {
         if (driver != null) driver.quit();
+
+        System.out.println("le test a reussi, fermeture du navigateur");
     }
 }

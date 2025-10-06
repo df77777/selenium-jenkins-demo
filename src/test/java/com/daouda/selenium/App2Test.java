@@ -25,7 +25,14 @@ public class App2Test {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage"); // très important pour éviter les crashs dans Docker
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-background-networking");
+        options.addArguments("--disable-software-rasterizer");
+
 
         // URL du hub Selenium Grid
         URL gridUrl = new URL("http://localhost:4444/wd/hub");
@@ -40,6 +47,7 @@ public class App2Test {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
         System.out.println("AppTest2");
+        Thread.sleep(10000);
 
         try {
             // Cookies
