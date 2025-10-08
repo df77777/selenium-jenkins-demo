@@ -85,8 +85,8 @@ public class App2Test {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy({ top: 100, behavior: 'smooth'});");
         Thread.sleep(1000);
 
-        driver.findElement(By.xpath("//input[@value='Automation Tester']")).click();
-        Thread.sleep(3000);
+        //driver.findElement(By.xpath("//input[@value='Automation Tester']")).click();
+        //Thread.sleep(3000);
         driver.findElement(By.cssSelector("input[value='Selenium Webdriver']")).click();
         Thread.sleep(3000);
 
