@@ -1,7 +1,5 @@
 package com.daouda.selenium;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -88,26 +86,6 @@ public class App2Test {
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy({ top: 100, behavior: 'smooth'});");
         Thread.sleep(1000);
-
-        /*
-
-        driver.findElement(By.xpath("//input[@value='Automation Tester']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.cssSelector("input[value='Selenium Webdriver']")).click();
-        Thread.sleep(3000);
-
-        Select continent = new Select(driver.findElement(By.id("continents")));
-        continent.selectByVisibleText("Europe");
-        Thread.sleep(3000);
-
-        Select commands = new Select(driver.findElement(By.id("selenium_commands")));
-        commands.selectByVisibleText("Navigation Commands");
-        Thread.sleep(3000);
-
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 250);");
-        Thread.sleep(1000);
-
-         */
 
         // Clic sur le bouton
         try {

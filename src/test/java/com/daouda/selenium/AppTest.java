@@ -1,7 +1,6 @@
 package com.daouda.selenium;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -126,73 +125,6 @@ public class AppTest {
             System.out.println("Start/Stop non présent");
         }
 
-        /*
-        Thread.sleep(1000);
-        // Alertes
-        Alert alert1 = driver.switchTo().alert();
-        Thread.sleep(1000);
-        System.out.println("Alert text: " + alert1.getText());
-        Thread.sleep(1000);
-        alert1.accept();
-        Thread.sleep(1000);
-
-        Alert alert2 = driver.switchTo().alert();
-        Thread.sleep(1000);
-        System.out.println("Confirm text: " + alert2.getText());
-        Thread.sleep(1000);
-        alert2.dismiss();
-        Thread.sleep(1000);
-
-        Alert alert3 = driver.switchTo().alert();
-        Thread.sleep(1000);
-        System.out.println("Prompt text: " + alert3.getText());
-        Thread.sleep(1000);
-        alert3.sendKeys("test");
-        Thread.sleep(1000);
-        alert3.accept();
-        Thread.sleep(1000);
-
-        // Fenêtres popup
-        String mainWindow = driver.getWindowHandle();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//button[@onclick='myFunction()']")).click();
-        Thread.sleep(1000);
-        for (String win : driver.getWindowHandles()) {
-            if (!win.equals(mainWindow)) {
-                driver.switchTo().window(win);
-                driver.close();
-            }
-        }
-        driver.switchTo().window(mainWindow);
-
-        driver.findElement(By.id("PopUp")).click();
-        for (String win : driver.getWindowHandles()) {
-            if (!win.equals(mainWindow)) {
-                driver.switchTo().window(win);
-                driver.close();
-            }
-        }
-
-        // Hover
-        try {
-            WebElement hover = driver.findElement(By.xpath("//button[text()='Point Me']"));
-            actions.scrollToElement(hover).moveToElement(hover).perform();
-            driver.findElement(By.linkText("Mobiles")).click();
-            System.out.println("Hover OK");
-        } catch (Exception e) {
-            System.out.println("Hover NOT OK");
-        }
-
-        // Double click
-        try {
-            WebElement doubleclick = driver.findElement(By.xpath("//button[@ondblclick='myFunction1()']"));
-            actions.doubleClick(doubleclick).perform();
-            System.out.println("Double clique OK");
-        } catch (Exception e) {
-            System.out.println("Double clique non OK");
-        }
-
-         */
     }
 
     @AfterEach

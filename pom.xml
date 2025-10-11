@@ -48,7 +48,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
+                    <threadCount>3</threadCount>
                 </configuration>
             </plugin>
             <plugin>
