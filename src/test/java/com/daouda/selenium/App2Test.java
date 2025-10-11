@@ -3,6 +3,8 @@ package com.daouda.selenium;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -20,7 +22,7 @@ public class App2Test {
 
     private WebDriver driver;
 
-    @Before
+    @BeforeEach
     public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless=new");
@@ -120,7 +122,7 @@ public class App2Test {
         Thread.sleep(5000);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         System.out.println("Fin du Test 2");
         if (driver != null) driver.quit();
