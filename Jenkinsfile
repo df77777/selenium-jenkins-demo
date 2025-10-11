@@ -26,7 +26,7 @@ pipeline {
         stage('Generate HTML Report') {
             steps {
                 echo 'Generating Surefire HTML report...'
-                bat 'mvn surefire-report:report-only -DoutputDirectory=target/report'
+                bat 'mvn surefire-report:report-only
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
-                    reportDir: 'target/report',
+                    reportDir: 'target/reports',
                     reportFiles: 'surefire.html',
                     reportName: 'Surefire HTML Report'
                 ])
