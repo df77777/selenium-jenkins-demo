@@ -22,32 +22,32 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        
+
         stage('Generate HTML Report') {
             steps {
                 echo 'Generating Surefire HTML report...'
-                bat 'mvn surefire-report:report-only'
-            }
-        }
-        stage('Publish HTML Report') {
-            steps {
-                publishHTML([allowMissing: false,
-                     alwaysLinkToLastBuild: true,
-                     keepAll: true,
-                     reportDir: 'target/site', 
-                     reportFiles: 'surefire-report.html',
-                     reportName: 'Surefire HTML Report'])
+                bat 'mvn surefire-report:report-only -DoutputDirectory=target/report'
             }
         }
 
+        stage('Publish HTML Report') {
+            steps {
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target/report',
+                    reportFiles: 'surefire.html',
+                    reportName: 'Surefire HTML Report'
+                ])
+            }
+        }
 
         stage('Archive Reports') {
             steps {
-                echo 'Archiving XML reports...'
+                echo 'Archiving XML and HTML reports...'
                 archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml', allowEmptyArchive: true
-                archiveArtifacts artifacts: 'target/site/surefire-report.html', allowEmptyArchive: false
-
-                
+                archiveArtifacts artifacts: 'target/report/surefire.html', allowEmptyArchive: false
             }
         }
 
