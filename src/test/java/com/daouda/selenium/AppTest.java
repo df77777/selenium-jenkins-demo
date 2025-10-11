@@ -1,6 +1,7 @@
 package com.daouda.selenium;
 
-
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,7 @@ public class AppTest {
     private WebDriverWait wait;
     private Actions actions;
 
-    @BeforeEach
+    @Before
     public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless=new");
@@ -127,7 +128,7 @@ public class AppTest {
 
     }
 
-    @AfterEach
+    @After
     public void tearDown() throws InterruptedException {
         System.out.println("Fin du Test 1");
         if (driver != null) driver.quit();

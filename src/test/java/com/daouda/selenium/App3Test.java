@@ -1,5 +1,7 @@
 package com.daouda.selenium;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class App3Test {
     private WebDriver driver;
 
-    @BeforeEach
-    void setUp() throws MalformedURLException {
+    @Before
+    public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
@@ -81,8 +83,8 @@ public class App3Test {
         Thread.sleep(1000);
     }
 
-    @AfterEach
-    void tearDown() {
+    @After
+    public void tearDown() {
         System.out.println("Fin du Test 3");
         if (driver != null) {
             driver.quit();
