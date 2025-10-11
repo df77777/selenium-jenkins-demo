@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -22,10 +23,31 @@ pipeline {
             }
         }
 
+        stage('Generate HTML Report') {
+            steps {
+                echo 'Generating Surefire HTML report...'
+                bat 'mvn surefire-report:report-only -DoutputDirectory=target/reports'
+            }
+        }
+
+        stage('Publish HTML Report') {
+            steps {
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target/reports',
+                    reportFiles: 'surefire.html',
+                    reportName: 'Surefire HTML Report'
+                ])
+            }
+        }
+
         stage('Archive Reports') {
             steps {
-                echo 'Archiving test reports...'
+                echo 'Archiving XML and HTML reports...'
                 archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'target/reports/surefire.html', allowEmptyArchive: false
             }
         }
 
