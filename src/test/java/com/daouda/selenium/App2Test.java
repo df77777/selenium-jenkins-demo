@@ -97,7 +97,7 @@ public class App2Test {
             System.out.println("Erreur lors du clic sur le bouton : " + e.getMessage());
         }
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @After

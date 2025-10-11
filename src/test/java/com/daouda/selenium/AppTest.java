@@ -92,7 +92,7 @@ public class AppTest {
         Thread.sleep(1000);
 
         driver.findElement(By.id("datepicker")).sendKeys("10/25/2025");
-        Thread.sleep(1000);
+        Thread.sleep(500);
         /*
 
         // Date readonly

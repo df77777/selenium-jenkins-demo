@@ -79,7 +79,7 @@ public class App3Test {
         // Retour en haut de la page
         WebElement topPage = driver.findElement(By.className("practice-form"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", topPage);
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @After
