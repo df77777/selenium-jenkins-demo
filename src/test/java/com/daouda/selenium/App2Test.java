@@ -52,10 +52,10 @@ public class App2Test {
 
         try {
             // Cookies
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             WebElement cookies = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='ez-accept-all']")));
             cookies.click();
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         }catch (Exception e){
             System.out.println("No Such Cookies");
         }
@@ -64,25 +64,25 @@ public class App2Test {
         // Scroll vers le formulaire
         WebElement formulaire = driver.findElement(By.xpath("//span[@style='font-size:large']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", formulaire);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
  */
 
         // Remplissage du formulaire
         driver.findElement(By.cssSelector("input[name='firstname']")).sendKeys("Daouda");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.findElement(By.cssSelector("input[name='lastname']")).sendKeys("Fofana");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy({ top: 100, behavior: 'smooth'});");
         Thread.sleep(1000);
 
         driver.findElement(By.id("sex-0")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.findElement(By.id("exp-1")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.findElement(By.id("datepicker")).sendKeys("29/07/2025");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy({ top: 100, behavior: 'smooth'});");
         Thread.sleep(1000);
@@ -97,7 +97,7 @@ public class App2Test {
             System.out.println("Erreur lors du clic sur le bouton : " + e.getMessage());
         }
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
     }
 
     @After

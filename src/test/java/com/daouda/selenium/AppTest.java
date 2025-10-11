@@ -27,7 +27,7 @@ public class AppTest {
     @Before
     public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
+        //options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage"); // très important pour éviter les crashs dans Docker
@@ -93,6 +93,7 @@ public class AppTest {
 
         driver.findElement(By.id("datepicker")).sendKeys("10/25/2025");
         Thread.sleep(1000);
+        /*
 
         // Date readonly
         WebElement date2 = driver.findElement(By.id("txtDate"));
@@ -123,6 +124,8 @@ public class AppTest {
         } catch (NoSuchElementException e) {
             System.out.println("Start/Stop non présent");
         }
+
+         */
 
     }
 

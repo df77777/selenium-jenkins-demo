@@ -20,7 +20,7 @@ public class App3Test {
     @Before
     public void setUp() throws MalformedURLException {
         EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
+        //options.addArguments("--headless=new");
         options.addArguments("--disable-gpu");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
