@@ -40,6 +40,7 @@ public class App3Test {
     @Test
     public void testFormulaireSeleniumPractice() throws InterruptedException {
         driver.get("https://selenium-practice.netlify.app/?utm_source=chatgpt.com");
+        System.out.println("Début AppTest3");
         Thread.sleep(1000);
 
         // Saisie du nom

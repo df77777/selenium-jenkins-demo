@@ -48,7 +48,7 @@ public class App2Test {
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
         driver.manage().window().setSize(new Dimension(1366,768));
         Thread.sleep(1000);
-        System.out.println("AppTest2");
+        System.out.println("Début AppTest2");
 
         try {
             // Cookies
