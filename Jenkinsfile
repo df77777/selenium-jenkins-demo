@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo 'Archiving XML and HTML reports...'
                 archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml', allowEmptyArchive: true
-                archiveArtifacts artifacts: 'target/report/surefire.html', allowEmptyArchive: false
+                archiveArtifacts artifacts: 'target/reports/surefire.html', allowEmptyArchive: false
             }
         }
 
