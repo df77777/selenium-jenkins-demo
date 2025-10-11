@@ -2,9 +2,7 @@ package com.daouda.selenium;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,8 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class App3Test {
     private WebDriver driver;
@@ -40,7 +38,7 @@ public class App3Test {
     }
 
     @Test
-    void testFormulaireSeleniumPractice() throws InterruptedException {
+    public void testFormulaireSeleniumPractice() throws InterruptedException {
         driver.get("https://selenium-practice.netlify.app/?utm_source=chatgpt.com");
         Thread.sleep(1000);
 
@@ -61,10 +59,10 @@ public class App3Test {
             Thread.sleep(1000);
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 100);");
             Thread.sleep(1000);
-            assertTrue(choix3.isSelected(), "La case 3 devrait être cochée après le clic");
+            assertTrue("La case 3 devrait être cochée après le clic", choix3.isSelected());
         } else {
             choix3.clear();
-            assertFalse(choix3.isSelected(), "La case 3 devrait être décochée après clear()");
+            assertFalse("La case 3 devrait être décochée après clear()", choix3.isSelected());
         }
 
         // Champ de date
