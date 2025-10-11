@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -22,10 +23,18 @@ pipeline {
             }
         }
 
+        stage('Generate HTML Report') {
+            steps {
+                echo 'Generating Surefire HTML report...'
+                bat 'mvn surefire-report:report'
+            }
+        }
+
         stage('Archive Reports') {
             steps {
-                echo 'Archiving test reports...'
+                echo 'Archiving XML and HTML reports...'
                 archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'target/site/surefire-report.html', allowEmptyArchive: true
             }
         }
 
