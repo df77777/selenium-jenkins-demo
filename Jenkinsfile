@@ -3,7 +3,6 @@ pipeline {
 
     triggers {
        cron @daily
-        @midnight
     }
 
     stages {
