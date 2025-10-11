@@ -22,11 +22,11 @@ pipeline {
                 bat 'mvn test'
             }
         }
-
+        
         stage('Generate HTML Report') {
             steps {
                 echo 'Generating Surefire HTML report...'
-                bat 'mvn surefire-report:report'
+                bat 'mvn surefire-report:report-only'
             }
         }
 
