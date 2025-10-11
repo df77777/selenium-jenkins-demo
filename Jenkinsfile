@@ -34,8 +34,8 @@ pipeline {
                 publishHTML([allowMissing: false,
                      alwaysLinkToLastBuild: true,
                      keepAll: true,
-                     reportDir: 'target/report',
-                     reportFiles: 'surefire.html',
+                     reportDir: 'target/site', 
+                     reportFiles: 'surefire-report.html',
                      reportName: 'Surefire HTML Report'])
             }
         }
@@ -45,6 +45,8 @@ pipeline {
             steps {
                 echo 'Archiving XML reports...'
                 archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'target/site/surefire-report.html', allowEmptyArchive: false
+
                 
             }
         }
