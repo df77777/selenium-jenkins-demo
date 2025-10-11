@@ -1,0 +1,91 @@
+package com.daouda.selenium;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.*;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class App3Test {
+    private WebDriver driver;
+
+    @BeforeEach
+    void setUp() throws MalformedURLException {
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-background-networking");
+        options.addArguments("--disable-software-rasterizer");
+
+        // URL du hub Selenium Grid
+        URL gridUrl = new URL("http://localhost:4444/wd/hub");
+
+        driver = new RemoteWebDriver(gridUrl, options);
+        driver.manage().window().maximize();
+    }
+
+    @Test
+    void testFormulaireSeleniumPractice() throws InterruptedException {
+        driver.get("https://selenium-practice.netlify.app/?utm_source=chatgpt.com");
+        Thread.sleep(1000);
+
+        // Saisie du nom
+        WebElement nameField = driver.findElement(By.cssSelector("input[type=text]"));
+        nameField.sendKeys("Daouda");
+        Thread.sleep(1000);
+
+        // Sélection dans la liste déroulante
+        Select listeDeroulante = new Select(driver.findElement(By.xpath("//select[@name='selection']")));
+        listeDeroulante.selectByVisibleText("Item 2");
+        Thread.sleep(1000);
+
+        // Case à cocher
+        WebElement choix3 = driver.findElement(By.cssSelector("input[name='check3']"));
+        if (!choix3.isSelected()) {
+            choix3.click();
+            Thread.sleep(1000);
+            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 100);");
+            Thread.sleep(1000);
+            assertTrue(choix3.isSelected(), "La case 3 devrait être cochée après le clic");
+        } else {
+            choix3.clear();
+            assertFalse(choix3.isSelected(), "La case 3 devrait être décochée après clear()");
+        }
+
+        // Champ de date
+        WebElement dateField = driver.findElement(By.xpath("//input[@name='date']"));
+        dateField.sendKeys("29-07-2025");
+        Thread.sleep(1000);
+
+        // Soumission du formulaire
+        WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        submitButton.click();
+        Thread.sleep(1000);
+
+        // Retour en haut de la page
+        WebElement topPage = driver.findElement(By.className("practice-form"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", topPage);
+        Thread.sleep(1000);
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("Fin du Test 3");
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

@@ -46,6 +46,8 @@ public class App2Test {
         // Initialisation de WebDriverWait
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
+        driver.manage().window().setSize(new Dimension(1366,768));
+        Thread.sleep(1000);
         System.out.println("AppTest2");
 
         try {

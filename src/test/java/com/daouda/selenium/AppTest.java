@@ -51,6 +51,8 @@ public class AppTest {
     @Test
     public void testAllAutomation() throws InterruptedException, IOException {
         driver.get("https://testautomationpractice.blogspot.com/?utm_source=chatgpt.com");
+        driver.manage().window().setSize(new Dimension(1366,768));
+        Thread.sleep(1000);
         System.out.println("AppTest1");
 
         // Cookie
