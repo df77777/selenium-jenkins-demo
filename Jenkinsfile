@@ -1,12 +1,14 @@
 pipeline {
     agent any
-     parameters {
+
+    parameters {
         choice(
             name: 'BROWSER',
             choices: ['chrome', 'firefox', 'edge'],
             description: 'Choisissez le navigateur sur lequel exécuter les tests'
         )
-     }
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -28,7 +30,6 @@ pipeline {
                 bat "mvn test -DBROWSER=${params.BROWSER}"
             }
         }
-
 
         stage('Generate HTML Report') {
             steps {
@@ -69,7 +70,6 @@ pipeline {
     post {
         always {
             echo 'Processing post-build actions...'
-            // Interprétation des tests JUnit pour Jenkins
             junit 'target/surefire-reports/*.xml'
         }
 
@@ -81,5 +81,4 @@ pipeline {
             echo 'Build failed!'
         }
     }
-}
 }
