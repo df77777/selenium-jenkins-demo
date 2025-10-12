@@ -21,7 +21,6 @@ import java.time.Duration;
 public class AppTest extends BaseTest{
 
     private WebDriverWait wait;
-    private Actions actions;
 
     @Test
     public void testAllAutomation() throws InterruptedException, IOException {
@@ -29,6 +28,7 @@ public class AppTest extends BaseTest{
         driver.manage().window().setSize(new Dimension(1366,768));
         Thread.sleep(1000);
         System.out.println("Début AppTest1");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Cookie
         wait.until(ExpectedConditions.elementToBeClickable(By.id("cookieChoiceDismiss"))).click();
