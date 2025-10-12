@@ -20,27 +20,6 @@ public class App2Test extends BaseTest{
 
     private WebDriver driver;
 
-    @Before
-    public void setUp() throws MalformedURLException {
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage"); // très important pour éviter les crashs dans Docker
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-background-networking");
-        options.addArguments("--disable-software-rasterizer");
-
-
-        // URL du hub Selenium Grid
-        URL gridUrl = new URL("http://localhost:4444/wd/hub");
-
-        driver = new RemoteWebDriver(gridUrl, options);
-
-    }
-
     @Test
     public void testFormulaireTechlistic() throws InterruptedException {
         // Initialisation de WebDriverWait

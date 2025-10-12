@@ -16,28 +16,40 @@ public class BaseTest {
 
     @Before
     public void setUp() throws MalformedURLException {
-        String browser = System.getProperty("BROWSER", "chrome"); // par défaut
+        String browser = System.getProperty("BROWSER", "chrome"); // valeur par défaut
         URL gridUrl = new URL("http://localhost:4444/wd/hub");
 
         switch (browser.toLowerCase()) {
             case "firefox":
-                driver = new RemoteWebDriver(gridUrl, new FirefoxOptions());
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addArguments("--headless=new");
+                firefoxOptions.addArguments("--disable-gpu");
+                firefoxOptions.addArguments("--no-sandbox");
+                firefoxOptions.addArguments("--disable-dev-shm-usage");
+                firefoxOptions.addArguments("--window-size=1920,1080");
+                driver = new RemoteWebDriver(gridUrl, firefoxOptions);
                 break;
+
             case "edge":
-                driver = new RemoteWebDriver(gridUrl, new EdgeOptions());
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--headless=new");
+                edgeOptions.addArguments("--disable-gpu");
+                edgeOptions.addArguments("--no-sandbox");
+                edgeOptions.addArguments("--disable-dev-shm-usage");
+                edgeOptions.addArguments("--window-size=1920,1080");
+                driver = new RemoteWebDriver(gridUrl, edgeOptions);
                 break;
-            default:
-                driver = new RemoteWebDriver(gridUrl, new ChromeOptions());
+
+            default: // Chrome
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless=new");
+                chromeOptions.addArguments("--disable-gpu");
+                chromeOptions.addArguments("--no-sandbox");
+                chromeOptions.addArguments("--disable-dev-shm-usage");
+                chromeOptions.addArguments("--window-size=1920,1080");
+                driver = new RemoteWebDriver(gridUrl, chromeOptions);
                 break;
-        }
-
-        driver.manage().window().maximize();
-    }
-
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
         }
     }
 }
+

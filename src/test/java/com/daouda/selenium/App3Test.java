@@ -17,29 +17,10 @@ import static org.junit.Assert.assertTrue;
 public class App3Test extends BaseTest{
     private WebDriver driver;
 
-    @Before
-    public void setUp() throws MalformedURLException {
-        EdgeOptions options = new EdgeOptions();
-        //options.addArguments("--headless=new");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-background-networking");
-        options.addArguments("--disable-software-rasterizer");
-
-        // URL du hub Selenium Grid
-        URL gridUrl = new URL("http://localhost:4444/wd/hub");
-
-        driver = new RemoteWebDriver(gridUrl, options);
-        driver.manage().window().maximize();
-    }
-
     @Test
     public void testFormulaireSeleniumPractice() throws InterruptedException {
         driver.get("https://selenium-practice.netlify.app/?utm_source=chatgpt.com");
+        driver.manage().window().setSize(new Dimension(1366,768));
         System.out.println("Début AppTest3");
         Thread.sleep(1000);
 
