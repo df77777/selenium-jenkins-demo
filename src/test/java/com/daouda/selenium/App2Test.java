@@ -16,7 +16,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.time.Instant;
 
-public class App2Test {
+public class App2Test extends BaseTest{
 
     private WebDriver driver;
 

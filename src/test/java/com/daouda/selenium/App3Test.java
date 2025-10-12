@@ -14,7 +14,7 @@ import java.net.URL;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class App3Test {
+public class App3Test extends BaseTest{
     private WebDriver driver;
 
     @Before

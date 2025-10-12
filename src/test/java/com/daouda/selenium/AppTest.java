@@ -18,7 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class AppTest {
+public class AppTest extends BaseTest{
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -130,7 +130,7 @@ public class AppTest {
     }
 
     @After
-    public void tearDown() throws InterruptedException {
+    public void tearDown() {
         System.out.println("Fin du Test 1");
         if (driver != null) driver.quit();
 
