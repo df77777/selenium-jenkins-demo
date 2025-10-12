@@ -6,6 +6,7 @@ pipeline {
             choices: ['chrome', 'firefox', 'edge'],
             description: 'Choisissez le navigateur sur lequel exécuter les tests'
         )
+     }
     stages {
         stage('Checkout') {
             steps {
