@@ -15,7 +15,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class App3Test extends BaseTest{
-    private WebDriver driver;
 
     @Test
     public void testFormulaireSeleniumPractice() throws InterruptedException {

@@ -18,8 +18,6 @@ import java.time.Instant;
 
 public class App2Test extends BaseTest{
 
-    private WebDriver driver;
-
     @Test
     public void testFormulaireTechlistic() throws InterruptedException {
         // Initialisation de WebDriverWait

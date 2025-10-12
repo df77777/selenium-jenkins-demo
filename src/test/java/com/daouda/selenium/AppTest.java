@@ -20,10 +20,8 @@ import java.time.Duration;
 
 public class AppTest extends BaseTest{
 
-    private WebDriver driver;
     private WebDriverWait wait;
     private Actions actions;
-
 
     @Test
     public void testAllAutomation() throws InterruptedException, IOException {

@@ -51,5 +51,12 @@ public class BaseTest {
                 break;
         }
     }
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
 }
 
