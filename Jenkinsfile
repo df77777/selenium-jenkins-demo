@@ -12,7 +12,11 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out the code from SCM...'
-                checkout scm
+                git(
+                    url: 'https://github.com/df77777/selenium-jenkins-demo.git',
+                    credentialsId: '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',
+                    branch: 'master' 
+                )
             }
         }
 
