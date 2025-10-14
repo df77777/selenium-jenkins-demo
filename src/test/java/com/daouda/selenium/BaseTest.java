@@ -32,7 +32,7 @@ public class BaseTest {
 
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
-                //edgeOptions.addArguments("--headless=new");
+                edgeOptions.addArguments("--headless=new");
                 edgeOptions.addArguments("--disable-gpu");
                 edgeOptions.addArguments("--no-sandbox");
                 edgeOptions.addArguments("--disable-dev-shm-usage");
