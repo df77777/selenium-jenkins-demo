@@ -22,7 +22,7 @@ public class BaseTest {
         switch (browser.toLowerCase()) {
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless=new");
+                //firefoxOptions.addArguments("--headless=new");
                 firefoxOptions.addArguments("--disable-gpu");
                 firefoxOptions.addArguments("--no-sandbox");
                 firefoxOptions.addArguments("--disable-dev-shm-usage");
@@ -32,7 +32,7 @@ public class BaseTest {
 
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--headless=new");
+                //edgeOptions.addArguments("--headless=new");
                 edgeOptions.addArguments("--disable-gpu");
                 edgeOptions.addArguments("--no-sandbox");
                 edgeOptions.addArguments("--disable-dev-shm-usage");
@@ -42,7 +42,7 @@ public class BaseTest {
 
             default: // Chrome
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new");
+                //chromeOptions.addArguments("--headless=new");
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
