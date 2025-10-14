@@ -22,31 +22,31 @@ public class BaseTest {
         switch (browser.toLowerCase()) {
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless=new");
+                //firefoxOptions.addArguments("--headless=new");
                 firefoxOptions.addArguments("--disable-gpu");
                 firefoxOptions.addArguments("--no-sandbox");
                 firefoxOptions.addArguments("--disable-dev-shm-usage");
-                firefoxOptions.addArguments("--window-size=1920,1080");
+                firefoxOptions.addArguments("--window-size=1366,768");
                 driver = new RemoteWebDriver(gridUrl, firefoxOptions);
                 break;
 
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--headless=new");
+                //edgeOptions.addArguments("--headless=new");
                 edgeOptions.addArguments("--disable-gpu");
                 edgeOptions.addArguments("--no-sandbox");
                 edgeOptions.addArguments("--disable-dev-shm-usage");
-                edgeOptions.addArguments("--window-size=1920,1080");
+                edgeOptions.addArguments("--window-size=1366,768");
                 driver = new RemoteWebDriver(gridUrl, edgeOptions);
                 break;
 
             default: // Chrome
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new");
+                //chromeOptions.addArguments("--headless=new");
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--no-sandbox");
                 chromeOptions.addArguments("--disable-dev-shm-usage");
-                chromeOptions.addArguments("--window-size=1920,1080");
+                chromeOptions.addArguments("--window-size=1366,768");
                 driver = new RemoteWebDriver(gridUrl, chromeOptions);
                 break;
         }
