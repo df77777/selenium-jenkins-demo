@@ -12,7 +12,11 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out the code from SCM...'
-                checkout scm
+                git(
+                    url: 'https://github.com/df77777/selenium-jenkins-demo.git',
+                    credentialsId: 'github-token-private-repo',
+                    branch: 'master' 
+                )
             }
         }
 
@@ -26,7 +30,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests on ${params.BROWSER}"
-                bat "mvn test -DBROWSER=${params.BROWSER}"
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat "mvn test -DBROWSER=${params.BROWSER}"
+                }
             }
         }
 
