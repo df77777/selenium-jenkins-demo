@@ -30,7 +30,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests on ${params.BROWSER}"
-                bat "mvn test -DBROWSER=${params.BROWSER}"
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat "mvn test -DBROWSER=${params.BROWSER}"
+                }
             }
         }
 
