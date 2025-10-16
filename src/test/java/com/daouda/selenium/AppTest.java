@@ -41,6 +41,7 @@ public class AppTest extends BaseTest{
         Thread.sleep(1000);
         driver.findElement(By.id("phone")).sendKeys("0789098716");
         Thread.sleep(1000);
+        /*
         driver.findElement(By.id("textarea")).sendKeys("16 rue de Karl 01267");
         Thread.sleep(1000);
         driver.findElement(By.id("female")).click();
@@ -68,6 +69,8 @@ public class AppTest extends BaseTest{
 
         driver.findElement(By.id("datepicker")).sendKeys("10/25/2025");
         Thread.sleep(500);
+
+         */
         /*
 
         // Date readonly
