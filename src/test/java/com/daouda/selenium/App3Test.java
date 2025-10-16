@@ -26,20 +26,20 @@ public class App3Test extends BaseTest{
         // Saisie du nom
         WebElement nameField = driver.findElement(By.cssSelector("input[type=text]"));
         nameField.sendKeys("Daouda");
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
         // Sélection dans la liste déroulante
         Select listeDeroulante = new Select(driver.findElement(By.xpath("//select[@name='selection']")));
         listeDeroulante.selectByVisibleText("Item 2");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         // Case à cocher
         WebElement choix3 = driver.findElement(By.cssSelector("input[name='check3']"));
         if (!choix3.isSelected()) {
             choix3.click();
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 100);");
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             assertTrue("La case 3 devrait être cochée après le clic", choix3.isSelected());
         } else {
             choix3.clear();
@@ -49,12 +49,12 @@ public class App3Test extends BaseTest{
         // Champ de date
         WebElement dateField = driver.findElement(By.xpath("//input[@name='date']"));
         dateField.sendKeys("29-07-2025");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         // Soumission du formulaire
         WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
         submitButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         // Retour en haut de la page
         WebElement topPage = driver.findElement(By.className("practice-form"));
