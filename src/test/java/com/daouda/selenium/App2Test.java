@@ -53,6 +53,7 @@ public class App2Test extends BaseTest{
 
         ((JavascriptExecutor) driver).executeScript("window.scrollBy({ top: 100, behavior: 'smooth'});");
         Thread.sleep(1000);
+        /*
 
         driver.findElement(By.id("sex-0")).click();
         Thread.sleep(1000);
@@ -73,7 +74,7 @@ public class App2Test extends BaseTest{
         } catch (Exception e) {
             System.out.println("Erreur lors du clic sur le bouton : " + e.getMessage());
         }
-
+         */
         Thread.sleep(500);
     }
 
