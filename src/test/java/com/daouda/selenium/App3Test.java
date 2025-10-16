@@ -21,7 +21,7 @@ public class App3Test extends BaseTest{
         driver.get("https://selenium-practice.netlify.app/?utm_source=chatgpt.com");
         driver.manage().window().setSize(new Dimension(1366,768));
         System.out.println("Début AppTest3");
-        Thread.sleep(5000);
+        Thread.sleep(11000);
 
         // Saisie du nom
         WebElement nameField = driver.findElement(By.cssSelector("input[type=text]"));
